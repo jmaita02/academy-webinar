@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grabación del Webinar · Conkomerco Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* ============================
+     TOKENS DE MARCA
+  ============================ */
+  :root{
+    --violeta:    #4A0172;
+    --violeta-dk: #380054;
+    --lavanda:    #8B5BB1;
+    --humo:       #F0EAF7;
+    --blanco:     #FFFFFF;
+    --piedra:     #F4F4F6;
+    --texto:      #2D2D3A;
+    --suave:      #6B6B80;
+    --indigo:     #3730A3;
+    --salvia:     #16A34A;
+    --salvia-dk:  #128a3e;
+    --borde:      #E3E1E8;
+    --violeta-10: rgba(74,1,114,.10);
+  }
+
+  /* ============================
+     RESET + BASE
+  ============================ */
+  *, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--blanco);
+    color:var(--texto);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--salvia);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ============================
+     UTILIDADES
+  ============================ */
+  .inner{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--lavanda);
+    margin-bottom:12px;
+  }
+  .eyebrow--light{ color:#C9A9DE; }
+
+  /* ============================
+     HEADER
+  ============================ */
+  .site-header{
+    background:var(--violeta);
+    padding:18px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    color:#fff;
+    letter-spacing:-.01em;
+  }
+  .logo span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    font-weight:500;
+    color:#C9A9DE;
+    display:block;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+  .iso-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:#C9A9DE;
+    border:1px solid rgba(201,169,222,.4);
+    border-radius:100px;
+    padding:4px 12px;
+    letter-spacing:.05em;
+  }
+
+  /* ============================
+     HERO — GRABACIÓN
+  ============================ */
+  .hero{
+    background:var(--violeta);
+    padding:56px 0 0;
+    overflow:hidden;
+  }
+  .hero__inner{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .hero__content{ padding-bottom:56px; }
+  .hero__tag{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:100px;
+    padding:5px 13px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#E6D7F0;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero__tag-dot{
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--salvia);
+    flex:none;
+  }
+  .hero h1{
+    font-family:'Poppins', sans-serif;
+    font-size:clamp(26px,3.5vw,36px);
+    font-weight:700;
+    line-height:1.15;
+    color:#fff;
+    letter-spacing:-.01em;
+    margin-bottom:8px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:#C9A9DE;
+  }
+  .hero__webinar-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--salvia);
+    margin-bottom:6px;
+    font-weight:500;
+  }
+  .hero__desc{
+    font-size:15.5px;
+    color:rgba(255,255,255,.75);
+    line-height:1.65;
+    margin-bottom:22px;
+  }
+  .hero__bullets{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .hero__bullets li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:14.5px;
+    color:rgba(255,255,255,.85);
+    line-height:1.5;
+  }
+  .hero__bullets li::before{
+    content:'';
+    display:block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--lavanda);
+    margin-top:6px;
+    flex:none;
+  }
+
+  /* ---- Tarjeta del formulario ---- */
+  .form-card{
+    background:var(--blanco);
+    border-radius:12px 12px 0 0;
+    padding:28px 28px 32px;
+    box-shadow:0 -4px 24px rgba(0,0,0,.15);
+    align-self:flex-end;
+  }
+  .form-card__title{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    color:var(--violeta);
+    margin-bottom:4px;
+  }
+  .form-card__sub{
+    font-size:13.5px;
+    color:var(--suave);
+    margin-bottom:20px;
+    line-height:1.45;
+  }
+
+  /* ---- Formulario nativo (visible si Google Form no se embebe) ---- */
+  .native-form{ display:flex; flex-direction:column; gap:14px; }
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--texto);
+    margin-bottom:5px;
+    letter-spacing:.01em;
+  }
+  .field input, .field select{
+    width:100%;
+    border:1.5px solid var(--borde);
+    border-radius:6px;
+    padding:10px 13px;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:var(--texto);
+    background:var(--blanco);
+    transition:border-color .15s;
+    appearance:none;
+  }
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--lavanda);
+    box-shadow:0 0 0 3px rgba(139,91,177,.12);
+  }
+  .field input::placeholder{ color:#A9A9BA; }
+
+  /* ---- Botón primario ---- */
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    width:100%;
+    background:var(--salvia);
+    color:#fff;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:13px 20px;
+    border:none;
+    border-radius:7px;
+    cursor:pointer;
+    transition:background .15s, transform .12s;
+    margin-top:4px;
+    text-decoration:none;
+  }
+  .btn-primary:hover{ background:var(--salvia-dk); transform:translateY(-1px); }
+  .btn-primary svg{ width:15px; height:15px; flex:none; }
+
+  /* ---- Nota legal del form ---- */
+  .form-note{
+    font-size:12px;
+    color:var(--suave);
+    text-align:center;
+    margin-top:12px;
+    line-height:1.5;
+  }
+
+  /* ---- Mensaje de éxito tras enviar ---- */
+  .form-success{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    background:rgba(22,163,74,.08);
+    border:1.5px solid rgba(22,163,74,.3);
+    border-radius:8px;
+    padding:16px 18px;
+    font-size:14px;
+    color:var(--texto);
+    line-height:1.5;
+  }
+  .form-success svg{ width:20px; height:20px; color:var(--salvia); flex:none; margin-top:1px; }
+  .btn-primary[disabled]{ opacity:.7; cursor:default; }
+  .btn-primary[disabled]:hover{ background:var(--salvia); transform:none; }
+
+  /* ============================
+     DIVIDER
+  ============================ */
+  .divider-strip{
+    background:var(--humo);
+    border-top:1px solid var(--borde);
+    border-bottom:1px solid var(--borde);
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .divider-strip p{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--violeta);
+    font-weight:500;
+  }
+  .divider-line{
+    flex:1;
+    height:1px;
+    background:var(--lavanda);
+    opacity:.35;
+  }
+
+  /* ============================
+     SECCIÓN 2 — ACADEMY
+  ============================ */
+  .academy{
+    padding:60px 0 68px;
+    background:var(--blanco);
+  }
+  .academy .inner{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:52px;
+    align-items:center;
+  }
+  .academy__content{ }
+  .academy h2{
+    font-family:'Poppins', sans-serif;
+    font-size:clamp(22px,2.8vw,30px);
+    font-weight:700;
+    line-height:1.2;
+    color:var(--texto);
+    letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  .academy h2 em{
+    font-style:normal;
+    color:var(--violeta);
+  }
+  .academy__body{
+    font-size:15.5px;
+    color:var(--suave);
+    line-height:1.65;
+    margin-bottom:0;
+  }
+  .academy__body p + p{ margin-top:12px; }
+
+  /* ---- Tarjeta del código ---- */
+  .code-card{
+    background:var(--piedra);
+    border:1.5px solid var(--borde);
+    border-radius:10px;
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .code-card__label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--indigo);
+    letter-spacing:.01em;
+  }
+  .code-card__label svg{ width:16px; height:16px; color:var(--indigo); flex:none; }
+
+  /* El código en sí */
+  .discount-code{
+    background:var(--violeta);
+    border-radius:8px;
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+  }
+  .discount-code__pre{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#C9A9DE;
+  }
+  .discount-code__value{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:.06em;
+  }
+  .discount-code__desc{
+    font-size:12.5px;
+    color:#C9A9DE;
+    margin-top:4px;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  .code-card__validity{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--suave);
+    letter-spacing:.04em;
+    text-align:center;
+    border-top:1px solid var(--borde);
+    padding-top:14px;
+  }
+  .code-card__validity strong{ color:var(--violeta); font-weight:600; }
+
+  /* Botón secundario (outline violeta) */
+  .btn-outline{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    width:100%;
+    background:transparent;
+    color:var(--violeta);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    padding:12px 20px;
+    border:2px solid var(--violeta);
+    border-radius:7px;
+    cursor:pointer;
+    transition:background .15s, color .15s, transform .12s;
+    text-decoration:none;
+  }
+  .btn-outline:hover{
+    background:var(--violeta);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .btn-outline svg{ width:15px; height:15px; flex:none; }
+
+  /* ============================
+     FOOTER
+  ============================ */
+  .site-footer{
+    background:var(--violeta);
+    padding:24px 24px 32px;
+    text-align:center;
+  }
+  .site-footer p{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:#C9A9DE;
+    letter-spacing:.05em;
+    line-height:1.8;
+  }
+
+  /* ============================
+     RESPONSIVE
+  ============================ */
+  @media (max-width:720px){
+    .hero__inner{
+      grid-template-columns:1fr;
+      gap:0;
+    }
+    .hero__content{ padding-bottom:28px; }
+    .form-card{ border-radius:12px; }
+    .academy .inner{ grid-template-columns:1fr; gap:36px; }
+    .site-header{ gap:12px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary, .btn-outline{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="logo">
+    Conkomerco
+    <span>Farmacovigilancia y Tecnovigilancia</span>
+  </div>
+  <div class="iso-badge">ISO 9001:2015 CERTIFICADO</div>
+</header>
+
+<!-- ============ HERO — ACCESO A GRABACIÓN ============ -->
+<section class="hero">
+  <div class="hero__inner">
+
+    <!-- Columna izquierda: copy -->
+    <div class="hero__content">
+      <div class="hero__tag">
+        <span class="hero__tag-dot"></span>
+        Grabación disponible
+      </div>
+      <p class="hero__webinar-label">Webinar Conkomerco</p>
+      <h1>Lo que DIGEMID <em>realmente</em> inspecciona</h1>
+      <p class="hero__desc" style="margin-top:14px;">
+        Revive esta capacitación y conoce los 7 aspectos críticos que DIGEMID evalúa durante una inspección de Buenas Prácticas de Farmacovigilancia.
+      </p>
+      <ul class="hero__bullets">
+        <li>Los puntos críticos que generan más observaciones durante una inspección</li>
+        <li>Los errores más frecuentes encontrados en los sistemas de FV</li>
+        <li>Recomendaciones concretas para fortalecer el cumplimiento regulatorio</li>
+      </ul>
+    </div>
+
+    <!-- Columna derecha: formulario 1 (conectado a Google Form) -->
+    <div class="form-card">
+      <p class="form-card__title">Accede a la grabación</p>
+      <p class="form-card__sub">Completa tus datos y recibirás el enlace en tu correo electrónico.</p>
+
+      <form class="native-form" id="form1" action="https://docs.google.com/forms/d/e/1FAIpQLSeEQDhFGeHAh1tTH9MDZ73Nf9zE9jYLikabhkfg3YhcRSGGBQ/formResponse" method="POST" target="hidden_iframe1">
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="entry.1216119538" placeholder="Tu nombre" required>
+        </div>
+        <div class="field">
+          <label for="empresa">Empresa / Organización</label>
+          <input type="text" id="empresa" name="entry.1338554573" placeholder="Nombre de la empresa" required>
+        </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="entry.280993718" placeholder="correo@empresa.com" required>
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="entry.1493554820" placeholder="+51 9XX XXX XXX">
+        </div>
+        <button type="submit" class="btn-primary" id="btnSubmit1">
+          Quiero acceder a la grabación
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <div class="form-success" id="form1-success" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span>¡Listo! Revisa tu correo: te enviaremos las instrucciones para acceder a la grabación desde Conkomerco Academy.</span>
+      </div>
+
+      <iframe name="hidden_iframe1" id="hidden_iframe1" style="display:none;" title="Envío de formulario"></iframe>
+
+      <p class="form-note">Tu información es confidencial y no será compartida con terceros.</p>
+    </div>
+
+  </div><!-- /hero__inner -->
+</section>
+
+<!-- ============ DIVISOR ============ -->
+<div class="divider-strip">
+  <div class="divider-line"></div>
+  <p>Conkomerco Academy · Capacitación especializada en FV/TV</p>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ============ SECCIÓN 2 — ACADEMY + CÓDIGO ============ -->
+<section class="academy">
+  <div class="inner">
+
+    <!-- Columna izquierda: copy -->
+    <div class="academy__content">
+      <span class="eyebrow">¿Te pareció interesante el webinar?</span>
+      <h2>Este contenido fue solo una muestra de lo que <em>puedes dominar</em></h2>
+      <div class="academy__body">
+        <p>
+          El webinar permitió identificar los puntos críticos que DIGEMID inspecciona. Sin embargo, por el tiempo disponible, fue posible abordar solo una parte de los aspectos contemplados en el Manual de Buenas Prácticas de Farmacovigilancia.
+        </p>
+        <p>
+          En Conkomerco Academy encontrarás capacitaciones especializadas diseñadas para Directores Técnicos y Responsables de FV/TV que necesitan fortalecer sus competencias regulatorias con respaldo técnico real.
+        </p>
+        <p>
+          Si deseas saber qué programas están disponibles y cómo aplicar el código de descuento, completa el formulario y te contactamos directamente.
+        </p>
+      </div>
+    </div>
+
+    <!-- Columna derecha: tarjeta de código -->
+    <div class="code-card">
+
+      <div class="code-card__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+        Beneficio exclusivo por tiempo limitado
+      </div>
+
+      <div class="discount-code">
+        <span class="discount-code__pre">Código de descuento</span>
+        <span class="discount-code__value">DIGEMID10</span>
+        <span class="discount-code__desc">10% de descuento en capacitaciones<br>especializadas de Conkomerco Academy</span>
+      </div>
+
+      <a href="https://forms.gle/nzLwiNxhs3v8nZ629" target="_blank" rel="noopener" class="btn-outline">
+        Quiero más información sobre las capacitaciones
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+
+      <p class="code-card__validity">
+        Válido durante <strong>todo julio 2026</strong><br>
+        Aplica mencionando el código al momento de inscripción
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <p>CONKOMERCO S.A.C. · RUC 20601494117 · LIMA, PERÚ</p>
+  <p>OUTSOURCING EN FARMACOVIGILANCIA Y TECNOVIGILANCIA · ISO 9001:2015</p>
+</footer>
+
+<script>
+  // Envía el Formulario 1 directo a Google Forms (POST oculto) y muestra confirmación en la página.
+  document.getElementById('form1').addEventListener('submit', function(){
+    var btn = document.getElementById('btnSubmit1');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+    setTimeout(function(){
+      document.getElementById('form1').style.display = 'none';
+      document.getElementById('form1-success').style.display = 'flex';
+    }, 900);
+  });
+</script>
+
+</body>
+</html>
